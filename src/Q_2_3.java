@@ -9,38 +9,10 @@
 public class Q_2_3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		LinkedList list = new LinkedList();
-		list.append("a");
-		list.append("b");
-		list.append("c");
-		list.append("d");
-		list.append("e");
-		
-		deleteMiddleNode(list);
 		
 	}
 	
-	public static void deleteMiddleNode(LinkedList list) {
-		int count = 0;
-		Node current = list.head;
-		
-		while (current.next != null) {
-			count ++;
-			current = current.next;
-		}
-		
-		int deleteNodeIndex = count/2;
-		current = list.head;
-		for (int i=0; i < deleteNodeIndex; i++) {
-			current = current.next;
-			if (i == deleteNodeIndex) {
-				current.next = current.next.next;
-			}
-		}
-		System.out.println(list);
-		
-	}
+	
 	
 	public static class Node {
 		Node next = null;
