@@ -1,6 +1,26 @@
+// ** 이진검색트리 클래스
 public class BinarySearchTree<K,V> {
 
-  // 노드 클래스
+  private Node<K,V> root; // 루트
+  private Comparator<? super K> comparator = null;  // 비교자(키 값의 대소 관계를 비교)
+  
+  // 생성자
+  public BinarySearchTree(){
+    root = null;
+  }
+  
+  // 생성자
+  public BinarySearchTree(Comparator<? super K> c){
+    this();
+    comparator = c;
+  }
+  
+  // 키값 비교
+  private int compare(K key1, K key2){
+    return (comparator == null) ? ((Comparable<K>)key1).compareTo(key2) : comparator.compare(key1, key2);
+  }
+  
+  // ** 노드 클래스
   static class Node<K,V> {
     private K key;          // 키 값
     private V data;         // 데이터 
