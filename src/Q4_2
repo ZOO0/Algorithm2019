@@ -20,6 +20,47 @@ public class BinarySearchTree<K,V> {
     return (comparator == null) ? ((Comparable<K>)key1).compareTo(key2) : comparator.compare(key1, key2);
   }
   
+  // 검색
+  private V search(K key){
+    Node<K,V> p = root;
+    while (true){
+      if(p == null) return null;
+      int condition = compare(key, p.getKey());
+      if (condition == 0){
+        return p.getValue;    // 검색 성공
+      } else if (condition < 0){
+        p = p.left; // 왼쪽 서브트리에서 탐색
+      } else {
+        p = p.right; // 오른쪼 서브트리에서 탐색
+      }
+    }
+  }
+  
+  private void addNode(Node<K,V> node, K key, V data){
+    int condition = compare(key, node.getKey());
+    if (condition == 0){ return; } // key가 트리 이미 있음
+    else if (condition < 0){
+      if (node.left == null){
+        node.left = new Node<K,V>(key, data, null, null);
+      } else {
+        addNode(node.left, key, data);
+    } else {
+      if(node.right == null){
+        node.right = new Node<K,V>(key, data, null, null);
+      } else {
+        addNode(node.right, key, data);
+      }
+    }
+  }
+  
+  public void add(K key, V data){
+    if (root == null){
+      root = new Node<K,V>(key, data, null, null);
+    } else {
+      addNode(root, key, data);
+    }
+  }
+  
   // ** 노드 클래스
   static class Node<K,V> {
     private K key;          // 키 값
