@@ -32,11 +32,11 @@ public class IntStack {
 		
 	public int pop() throws EmptyException {
 		if (pointer <= 0 ) throw new EmptyException();
-		minimumValue[pointer] = null;
+//		minimumValue[pointer] = null;
 		return stack[--pointer];
 	}
 		
-	public int min() {
+	public int[] min() {
 		return minimumValue;
 	}
 		
