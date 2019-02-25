@@ -2,7 +2,14 @@ package Q4_5;
 
 import java.util.Comparator;
 
-// ** 이진검색트리 클래스
+/*
+
+이진검색트리 클래스
+
+이진검색트리를 만들고, add, search, 순회하는 기능을 담은 클래스
+
+ */
+
 public class BinarySearchTree<K,V> {
 
     Node<K, V> root; // 루트
