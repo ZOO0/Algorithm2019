@@ -108,7 +108,7 @@ public class BinarySearchTree<K,V> {
     }
 
     /* 트리가 이진탐색트리인가? */
-    int lastNodeKey;
+    int lastNodeKey; // 직전 노드 키 저장
     public boolean isBinarySearchTree(Node node){
         if(node!=null){
 
