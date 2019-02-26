@@ -108,17 +108,21 @@ public class BinarySearchTree<K,V> {
     }
 
     /* 트리가 이진탐색트리인가? */
+    int lastNodeKey;
     public boolean isBinarySearchTree(Node node){
         if(node!=null){
+
+            isBinarySearchTree(node.left);
+
             System.out.print(node.getKey() + " ");
 
-            if(node.left != null && (int)node.left.getKey() > (int)node.getKey()){
-                return false;
-            } else if(node.right != null && (int)node.getKey() > (int)node.right.getKey()){
+            if( lastNodeKey > (int)node.getKey() ){ //현재 노드 키와 이전 노드 키를 비교
                 return false;
             }
-            preorderTraversal(node.left);
-            preorderTraversal(node.right);
+            lastNodeKey = (int)node.getKey();
+//            System.out.print("(lastNodeKey : " + lastNodeKey + ") ");
+
+            isBinarySearchTree(node.right);
         }
         return true;
     }
